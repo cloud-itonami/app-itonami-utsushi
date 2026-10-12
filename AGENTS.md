@@ -18,8 +18,8 @@
 
 | ns | 役割 |
 |---|---|
-| `utsushi.container` | ① ISO BMFF box ツリー（R0 手書き → kasane.decode + grammar/mp4.edn） |
-| `utsushi.bitstream` | ② NAL/SPS/ADTS のフレーミング・メタ（ヘッダのみ） |
+| （外部）[`org-iso-isobmff`](https://github.com/kotoba-lang/org-iso-isobmff) | ① ISO BMFF box ツリー（旧 `utsushi.container`。2026-07 に抽出、本repoは `deps.edn` 依存のみ） |
+| （外部）[`org-iso-h264`](https://github.com/kotoba-lang/org-iso-h264) / `org-iso-aac` / `org-ietf-opus` | ② NAL/SPS/ADTS のフレーミング・メタ（旧 `utsushi.bitstream` は削除済み。配線は H.264 のみ — README 参照） |
 | `utsushi.codec`     | ③ R0 opaque passthrough / R1 native host word façade |
 | `utsushi.backend`   | ③ codec 実装カタログと選択（façade が dispatch する先。上の不変条件が実測で裏付けられた記録もここ） |
 | `utsushi.graph`     | ④ filtergraph を EDN で組み立て kotoba defgraph へ射影 |
