@@ -15,7 +15,7 @@ capability-gated host import に隔離する」哲学と、kasane の「純 cljc
 | 層 | 哲学 | 実体 |
 |---|---|---|
 | ① コンテナ demux/mux（MP4/MOV） | 純 cljc + EDN 文法 | [`org-iso-isobmff`](https://github.com/kotoba-lang/org-iso-isobmff)（外部repo、依存） |
-| ② ビットストリーム・フレーミング | 純 cljc（ヘッダのみ） | [`org-iso-h264`](https://github.com/kotoba-lang/org-iso-h264) / [`org-iso-aac`](https://github.com/kotoba-lang/org-iso-aac) / [`org-ietf-opus`](https://github.com/kotoba-lang/org-ietf-opus)（外部repo、未配線） |
+| ② ビットストリーム・フレーミング | 純 cljc（ヘッダのみ） | [`org-iso-h264`](https://github.com/kotoba-lang/org-iso-h264) / [`org-iso-aac`](https://github.com/kotoba-lang/org-iso-aac) / [`org-ietf-opus`](https://github.com/kotoba-lang/org-ietf-opus)（外部repo。H.264 は配線済み、AAC/Opus は未配線 — 下記 2026-08-29 訂正） |
 | ③ codec カーネル（実 decode/encode） | R0 opaque / R1 capability-gated native | `utsushi.codec`（本repo） |
 | ④ filtergraph | kotoba `defgraph` 射影 | `utsushi.graph`/`utsushi.pregel`/`utsushi.policy`（本repo） |
 | 横断: フレーム = Vault blob + `media/*` datom（CID） | content-addressed | `utsushi.quads`（本repo） |

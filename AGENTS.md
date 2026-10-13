@@ -11,7 +11,7 @@
   byte API は write-only builder）。codec は R0 opaque / R1 capability-gated native host word。
 - **メディア実体（mdat/フレーム/パケット）を EDN・git にインラインしない。** Vault blob + CID
   参照のみ（AGENTS.md 大容量バイナリ規律 / ADR §5）。生フレームを言語境界 `list<u8>` で跨がせない。
-- **層の哲学を混ぜない。** ①②④ は純 cljc + EDN（外部依存ゼロ）。③ R1 のみ capability で隔離した
+- **層の哲学を混ぜない。** ①②④ は純 cljc + EDN（native 依存なし。①② の実体は `deps.edn` で git 依存する `org-iso-isobmff`/`org-iso-h264` 側にある）。③ R1 のみ capability で隔離した
   native（CapClass::MediaDecode/MediaEncode + :media-decode/:media-encode effect）。
 
 ## 層
