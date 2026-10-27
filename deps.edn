@@ -44,21 +44,38 @@
         ;; kotoba.lang.edn replaced clojure.edn here (2026-09-23). An explicit floor:
         ;; tools.deps takes the NEWEST sha it is shown, and kbb resolves git deps
         ;; only from nbb.edn, so every project file this repo has names it.
-        io.github.kotoba-lang/edn {:git/sha "79dba32c8892058842c57783f06a2dfe4601aeb0"}
+        io.github.kotoba-lang/edn
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.edn"}
        ;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
         ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
         ;; this repo silently rides whatever a sibling happens to name.
-        io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}
-       io.github.kotoba-lang/org-iso-isobmff {:git/sha "50fbdbbeb5be30d8cab63877b220b7079a23b4a1"}
-         io.github.kotoba-lang/org-iso-h264    {:git/sha "de99083a368083f42c096f59388dc5798d85fbaf"}
-         io.github.kotoba-lang/langchain       {:git/sha "0f966d06c93d7fc76b0790fdece4c391dc257eb1"}}
+        io.github.kotoba-lang/text
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.text"}
+       io.github.kotoba-lang/org-iso-isobmff
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/org.iso.isobmff"}
+         io.github.kotoba-lang/org-iso-h264
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/org.iso.h264"}
+         io.github.kotoba-lang/langchain
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.langchain"}}
  :aliases
  {;; ffmpeg comparison benchmark — see bench/ffmpeg-comparison/README.md.
   ;; perfgate owns the statistics and the refusals; nothing here computes a
   ;; mean and calls it a result.
   :bench {:extra-paths ["bench/ffmpeg-comparison/src"]
           :extra-deps {io.github.kotoba-lang/perfgate
-                       {:git/sha "d4417d77c2333047dd4e478675e5ed13e1c6b1b8"}}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.perfgate"}}
           :main-opts ["-m" "utsushi.bench.ffmpeg-comparison"]}
   ;; Fixture regeneration needs the same extra path but a different -main.
   ;; It gets its own alias because `-M:bench -m other.ns` does NOT override an
@@ -72,7 +89,9 @@
   ;; profiler attached to a timed interval measures the profiler.
   :bench-profile {:extra-paths ["bench/ffmpeg-comparison/src"]
                   :extra-deps {io.github.kotoba-lang/perfgate
-                               {:git/sha "d4417d77c2333047dd4e478675e5ed13e1c6b1b8"}}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.perfgate"}}
                   :main-opts ["-m" "utsushi.bench.profile"]}
   ;; Where the gap comes from — the same operation in two containers.
   ;; Diagnostic only: it changes nothing in the decoder, and the
@@ -81,7 +100,9 @@
   :bench-attribution {:extra-paths ["bench/decode-cost-attribution/src"
                                     "bench/ffmpeg-comparison/src"]
                       :extra-deps {io.github.kotoba-lang/perfgate
-                                   {:git/sha "d4417d77c2333047dd4e478675e5ed13e1c6b1b8"}}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.perfgate"}}
                       :main-opts ["-m" "utsushi.bench.attribution"]}
   ;; the bench's REFUSAL logic is on the ordinary test path (its timing is
   ;; not) — a harness that stays silent when it could not measure is the
@@ -90,7 +111,9 @@
          :extra-deps {io.github.cognitect-labs/test-runner
                       {:git/tag "v0.5.1" :git/sha "dfb30dd6605cb6c0efc275e1df1736f6e90d4d73"}
                       io.github.kotoba-lang/perfgate
-                      {:git/sha "d4417d77c2333047dd4e478675e5ed13e1c6b1b8"}}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "4bf68e1a1b205674c70f386d59e430801fae3572"
+         :deps/root "lib/kotoba.perfgate"}}
          :main-opts ["-m" "cognitect.test-runner"]}
        ;; clj-kondo as a Clojars lib (no Homebrew/system install needed).
        :lint {:replace-deps {clj-kondo/clj-kondo {:mvn/version "2024.11.14"}}
